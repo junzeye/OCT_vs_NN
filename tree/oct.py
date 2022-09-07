@@ -296,3 +296,7 @@ class optimalDecisionTreeClassifier:
             rules[t] = r
 
         return rules
+
+if __name__ == '__main__':
+    clf = optimalDecisionTreeClassifier()
+    print(clf._calBaseline(np.asarray([1,1,2,3,5,5,5,5,5,5])))

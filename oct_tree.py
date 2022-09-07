@@ -28,7 +28,7 @@ class OCT_classifier:
         m.T_B = RangeSet(2 ** (self.max_depth - 1) - 1)
         m.T_L = RangeSet(2 ** (self.max_depth - 1), 2 ** self.max_depth - 1)
         m.I = RangeSet(0, dataset_length - 1) # index set of each data point
-        m.P = RangeSet(dim_x) # index set of the dimensions of the predictor variable
+        m.P = RangeSet(0, dim_x - 1) # index set of the dimensions of the predictor variable
         m.K = Set(initialize = class_labels) # class labels need not be numeric
     
     def _model_add_decision_var(self):
@@ -68,7 +68,7 @@ class OCT_classifier:
         m.obj = Objective(expr = sum(m.L_T[t] / m.L_hat for t in m.T_L) +
             self.alpha * sum(m.d_T[t] for t in m.T_B ))
 
-    # ¼ÇµÃ¼ì²é
+    # Remember to check
     def _model_add_constr(self, x, Epsilon):
         '''
         Adds constraints to `self.model`; helper method to be invoked within `self.fit()`.
@@ -105,9 +105,8 @@ class OCT_classifier:
                 parent = curr // 2
                 while parent > 0:
                     if parent * 2 == curr: # (13)
-                        m.splits.add( sum(m.a_JT[p, parent] * (x[i][p] + Epsilon[p - 1])
+                        m.splits.add( sum(m.a_JT[p, parent] * (x[i][p] + Epsilon[p])
                             for p in m.P) <= m.b_T[parent] + (1 + max(Epsilon)) * (1- m.z_IT[i, t]) )
-                        # Epsilon[p-1] is indexed (p-1) i/o p to accommodate pyomo list indexing
                     else: # (14)
                         m.splits.add( sum(m.a_JT[p, parent] * x[i][p] for p in m.P) >= m.b_T[parent]
                             - (1- m.z_IT[i, t]) )
@@ -140,9 +139,8 @@ class OCT_classifier:
 
     # Calculate baseline accuracy: accuracy of simply predicting the most popular class of the dataset
     def _get_baseline(self, y):
-        return np.bincount(y).max() / len(y)
+        return np.bincount(y).max()
 
-    # TO BE COMPLETED
     def _get_Epsilon(self, x):
         m = self.model
         Epsilon = [0 for j in m.P]
@@ -152,15 +150,15 @@ class OCT_classifier:
             for i in m.I:
                 x_j_i.append(x[i][j])
             x_j_i.sort()  # sort the values of the j-th feature
-        
+
             diff = []
             for i in m.I:
                 if i == len(m.I)-1:
                     continue
-                if x_j_i[j+1] - x_j_i[j] != 0:
-                    diff.append(x_j_i[j+1] - x_j_i[j])
+                if x_j_i[i+1] - x_j_i[i] != 0:
+                    diff.append(x_j_i[i+1] - x_j_i[i])
 
-            Epsilon[j] = min(diff)
+            Epsilon[j] = min(min(diff), 1)
 
         return Epsilon
 
@@ -175,11 +173,28 @@ class OCT_classifier:
         if self.output:
             print('Training data include {} instances, {} features.'.format(dataset_length, dim_x))
 
+        self._model_add_sets(dataset_length, dim_x, class_labels)
+
         L_hat = self._get_baseline(y)
         Epsilon = self._get_Epsilon(x)
 
-        self._model_add_sets(dataset_length, dim_x, class_labels)
         self._model_add_decision_var()
-        self._model_add_objective()
         self._model_add_param(L_hat, y)
+        self._model_add_objective()
         self._model_add_constr(x, Epsilon)
+
+        # customize this line based on solver type
+        opt = SolverFactory("gurobi")
+        opt.solve(self.model, options={'TimeLimit': self.timelimit})
+
+if __name__ == '__main__':
+    clf = OCT_classifier()
+    a = [[1,2],[3,5],[7,9]]
+    clf.model = ConcreteModel()
+    print(clf._get_baseline(np.asarray([1,1,2,3,5,5,5,5,5,5])))
+
+''' # test code for _get_Epsilon()
+    clf.model.P = RangeSet(0,1)
+    clf.model.I = RangeSet(0,2)
+    a_np = np.array([[20,15], [12,9], [17,9]]) / 50
+    print(clf._get_Epsilon(a_np))'''
