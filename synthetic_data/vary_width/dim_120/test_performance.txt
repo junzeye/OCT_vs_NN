@@ -1,0 +1,12 @@
+[INFO]: Epoch 1 of 6
+Loss: 2.056118965148926, Training Accuracy: 33.09803771972656, Test Accuracy: 33.96004867553711.
+[INFO]: Epoch 2 of 6
+Loss: 1.757482647895813, Training Accuracy: 40.07843017578125, Test Accuracy: 42.30317306518555.
+[INFO]: Epoch 3 of 6
+Loss: 1.5130655765533447, Training Accuracy: 41.882354736328125, Test Accuracy: 44.53583908081055.
+[INFO]: Epoch 4 of 6
+Loss: 1.4586225748062134, Training Accuracy: 47.843135833740234, Test Accuracy: 48.76615905761719.
+[INFO]: Epoch 5 of 6
+Loss: 1.3157544136047363, Training Accuracy: 50.431373596191406, Test Accuracy: 52.64394760131836.
+[INFO]: Epoch 6 of 6
+Loss: 1.4797396659851074, Training Accuracy: 57.80392074584961, Test Accuracy: 58.28437042236328.

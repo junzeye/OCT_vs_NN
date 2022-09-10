@@ -7,10 +7,19 @@ import numpy as np
 
 from sklearn.preprocessing import LabelBinarizer
 
-def loadData(dataname):
+def loadData(dataname, _class = 10):
     """
     load training and testing data from different dataset
+
+    `_class` is only meaningful for the `CTG` dataset. It 
+    represents which y values we would like to use. We can
+    either choose the y-value with 3 distinct classes or the
+    one with 10 distinct classes.
     """
+    # CTG
+    if dataname == 'CTG':
+        x, y = loadCTG(_class)
+        return x, y
     # balance-scale
     if dataname == 'balance-scale':
         x, y = loadBalanceScale()
@@ -59,6 +68,19 @@ def oneHot(x):
         lb.fit(np.unique(x[:,j]))
         x_enc = np.concatenate((x_enc, lb.transform(x[:,j])), axis=1)
     return x_enc
+
+def loadCTG(_class):
+    """
+    load balance-scale dataset
+    """
+    df = pd.read_csv('./data/CTG/CTG.csv', skiprows = 1, header=None, delimiter=',')
+    df.replace('', np.nan, inplace=True)
+    df.dropna(inplace = True)
+    if _class == 3:
+        x, y = df[[i for i in range(22)]], df[23].astype(int)
+    else: # i.e. _class == 10
+        x, y = df[[i for i in range(22)]], df[22].astype(int)
+    return np.array(x), np.array(y)
 
 def loadBalanceScale():
     """
@@ -166,3 +188,21 @@ def loadMonks(dataname):
     y = np.concatenate((y_train, y_test), axis=0)
     x = oneHot(x)
     return x, y
+
+if __name__ == '__main__':
+
+    from collections import Counter
+    x, y3 = loadData('CTG')
+    _, y10 = loadData('CTG', _class = 10)
+    counter_y3 = Counter(y3)
+    counter_y10 = Counter(y10)
+    print(counter_y3)
+    print(counter_y10)
+    
+    # Below: class label distribution in the dataset "CTG". Note that the 10-class y values
+    # are more evenly distributed than the 3-class ones.
+    # Counter({1: 1655, 2: 295, 3: 176})
+    # Counter({2: 579, 1: 384, 6: 332, 7: 252, 10: 197, 8: 107, 4: 81, 5: 72, 9: 69, 3: 53})
+    
+    # x, y = loadData('car-evaluation')
+    print("")
