@@ -7,19 +7,19 @@ import numpy as np
 
 from sklearn.preprocessing import LabelBinarizer
 
-def loadData(dataname, _class = 10):
+def loadData(dataname, dim: int):
     """
-    load training and testing data from different dataset
+    Load training and testing data from different datasets. Returns a tuple (x,y)
 
-    `_class` is only meaningful for the `CTG` dataset. It 
-    represents which y values we would like to use. We can
-    either choose the y-value with 3 distinct classes or the
-    one with 10 distinct classes.
+    `dim` is only meaningful for the `CTG` dataset. It 
+    represents either the width of the depth of the neural network
+    used to generate the synthetic data.
     """
-    # CTG
-    if dataname == 'CTG':
-        x, y = loadCTG(_class)
+    # CTG_width
+    if dataname == 'CTG_width':
+        x, y = loadCTG_width(dim)
         return x, y
+    ######################################
     # balance-scale
     if dataname == 'balance-scale':
         x, y = loadBalanceScale()
@@ -68,20 +68,16 @@ def oneHot(x):
         lb.fit(np.unique(x[:,j]))
         x_enc = np.concatenate((x_enc, lb.transform(x[:,j])), axis=1)
     return x_enc
-
-def loadCTG(_class):
+##################################################
+def loadCTG_width(dim: int):
     """
-    load balance-scale dataset
+    load synthetic dataset generated from UCI CTG dataset with NN. # of class labels = 10.
     """
-    df = pd.read_csv('./data/CTG/CTG.csv', skiprows = 1, header=None, delimiter=',')
-    df.replace('', np.nan, inplace=True)
-    df.dropna(inplace = True)
-    if _class == 3:
-        x, y = df[[i for i in range(22)]], df[23].astype(int)
-    else: # i.e. _class == 10
-        x, y = df[[i for i in range(22)]], df[22].astype(int)
-    return np.array(x), np.array(y)
-
+    x_df = pd.read_csv(f'synthetic_data/vary_width/dim_{dim}/x.csv', header=None, delimiter=',')
+    y_df = pd.read_csv(f'synthetic_data/vary_width/dim_{dim}/y.csv', header=None, delimiter=',')
+    y = np.reshape(np.array(y_df), np.array(y_df).size)
+    return np.array(x_df), y
+##################################################
 def loadBalanceScale():
     """
     load balance-scale dataset

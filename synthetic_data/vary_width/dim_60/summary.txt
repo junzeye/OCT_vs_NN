@@ -1,0 +1,19 @@
+There are 22 features in this synthetic dataset and 10 possible class labels.
+The dataset has 850 number of samples. To create the dataset, I
+first trained a feedforward neural network on a portion of the CTG dataset,
+and then I generated the ground labels by channeling the holdout data through
+the trained NN.
+
+The NN has two hidden layers of Sigmoid activation functions, where each hidden 
+layer has 60 nodes. The class distributions are as follows:
+
+0. 34.71 percent are from class 0
+1. 36.59 percent are from class 1
+2. 0.0 percent are from class 2
+3. 0.0 percent are from class 3
+4. 0.0 percent are from class 4
+5. 25.65 percent are from class 5
+6. 3.06 percent are from class 6
+7. 0.0 percent are from class 7
+8. 0.0 percent are from class 8
+9. 0.0 percent are from class 9
