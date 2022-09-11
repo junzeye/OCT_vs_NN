@@ -16,10 +16,10 @@ from sklearn import tree
 
 ## Optimal Classification Tree 
 
-timelimit = 1800 # time limit --> consider increasing for deeper trees
+timelimit = 2700 # time limit --> consider increasing for deeper trees
 datasets = ['CTG_width']
 alpha = [0, 0.01, 0.1]
-depth = [4,5,6,7]
+depth = [4,6,8]
 hidden_dims = [20, 40, 60, 80, 100, 120]
 seeds = [37, 42, 53] # use of specified random states for experiment reproducibility
 
