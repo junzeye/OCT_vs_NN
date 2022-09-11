@@ -1,0 +1,35 @@
+Training data include 425 instances, 22 features.
+Set parameter Username
+Academic license - for non-commercial use only - expires 2023-07-23
+Set parameter TimeLimit to value 2700
+Set parameter MIPGap to value 0.01
+Gurobi Optimizer version 9.5.2 build v9.5.2rc0 (mac64[x86])
+Thread count: 4 physical cores, 8 logical processors, using up to 8 threads
+Optimize a model with 34661 rows, 7304 columns and 614627 nonzeros
+Model fingerprint: 0xa3f35427
+Variable types: 95 continuous, 7209 integer (7209 binary)
+Coefficient statistics:
+  Matrix range     [2e-03, 4e+02]
+  Objective range  [1e-03, 7e-03]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 4e+02]
+
+Warning: Completing partial solution with 6800 unfixed non-continuous variables out of 7209
+User MIP start did not produce a new incumbent solution
+User MIP start violates constraint R169 by 1.000000000
+
+Found heuristic solution: objective 1.8333333
+Presolve time: 1.10s
+Presolved: 34661 rows, 7304 columns, 601091 nonzeros
+Variable types: 15 continuous, 7289 integer (7209 binary)
+
+Root relaxation: objective 0.000000e+00, 5434 iterations, 1.56 seconds (3.91 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0    0.00000    0    3    1.83333    0.00000   100%     -    3s
+H    0     0                       1.8096667    0.00000   100%     -    3s
+H    0     0                       1.8086667    0.00000   100%     -    3s
+H    0     0                       1.5943333    0.00007   100%     -   47s
+     0     0    0.00101    0 1657    1.59433    0.00101   100%     -   58s

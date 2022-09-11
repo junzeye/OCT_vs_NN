@@ -13,13 +13,16 @@ class optimalDecisionTreeClassifier:
     """
     optimal classification tree
     """
-    def __init__(self, max_depth=3, min_samples_split=2, alpha=0, warmstart=True, timelimit=600, MIPGap=0.01, output=True):
+    def __init__(self, max_depth=3, min_samples_split=2, alpha=0, warmstart=True, 
+                timelimit=600, MIPGap=0.01, DisplayInterval = 60, output=True):
         self.max_depth = max_depth
         self.min_samples_split = min_samples_split
         self.alpha = alpha
         self.warmstart = warmstart
         self.timelimit = timelimit
         self.MIPGap = MIPGap
+        # DisplayInterval is the frequency at which log lines are printed (in seconds)
+        self.DisplayInterval = DisplayInterval
         self.output = output
         self.trained = False
         self.optgap = None
