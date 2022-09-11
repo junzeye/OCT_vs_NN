@@ -1,15 +1,20 @@
-# python script version of new_experiments.ipynb - for running on Princeton's computing cluster
-
 import time
 from os import path
 import itertools
+
 import pandas as pd
+import warnings
+warnings.simplefilter(action='ignore', category=FutureWarning)
 from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split
+
 from tree import optimalDecisionTreeClassifier
+
 import dataset
 import tree as miptree
 from sklearn import tree
+
+## Optimal Classification Tree 
 
 timelimit = 1800 # time limit --> consider increasing for deeper trees
 datasets = ['CTG_width']
@@ -30,7 +35,6 @@ else:
     res_oct = pd.DataFrame(columns=['instance', 'depth', 'alpha', 'seed', 
                                     'train_acc', 'val_acc', 'test_acc', 'train_time', 'gap'])
 
-# train over the hyperparameter grid
 for data, hidden_dim, d, s in itertools.product(datasets, hidden_dims, depth, seeds): # simplifies nested for loops
     # load data
     x, y = dataset.loadData(data, hidden_dim)
@@ -42,8 +46,8 @@ for data, hidden_dim, d, s in itertools.product(datasets, hidden_dims, depth, se
     for a in alpha:
         # oct
         row = res_oct[(res_oct['instance'] == data) & (res_oct['depth'] == d) & 
-                    (res_oct['alpha'] == a) & (res_oct['seed'] == s)]
-        if len(row): # if the tree is already trained, just print the previously recorded results
+                    (res_oct['alpha'] == a) & (res_oct['seed'] == s) & (res_oct['Gap'] <= 0.02)]
+        if len(row): # if the specific oct is already trained and optimized up to a degree, we directly print the previously recorded results
             print(data, 'oct-d{}-a{}'.format(row['depth'].values[0],row['alpha'].values[0]),
                 'train acc:', row['train_acc'].values[0], 'val acc:', row['val_acc'].values[0],
                 'gap:', row['gap'].values[0])
@@ -64,3 +68,4 @@ for data, hidden_dim, d, s in itertools.product(datasets, hidden_dims, depth, se
             print(data, 'oct-d{}-a{}'.format(d,a), 
                 'train acc:', train_acc, 'val acc:', val_acc, 'gap:', octree.optgap)
             #print(row)
+
