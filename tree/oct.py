@@ -13,12 +13,13 @@ class optimalDecisionTreeClassifier:
     """
     optimal classification tree
     """
-    def __init__(self, max_depth=3, min_samples_split=2, alpha=0, warmstart=True, timelimit=600, output=True):
+    def __init__(self, max_depth=3, min_samples_split=2, alpha=0, warmstart=True, timelimit=600, MIPGap=0.01, output=True):
         self.max_depth = max_depth
         self.min_samples_split = min_samples_split
         self.alpha = alpha
         self.warmstart = warmstart
         self.timelimit = timelimit
+        self.MIPGap = MIPGap
         self.output = output
         self.trained = False
         self.optgap = None
@@ -99,6 +100,7 @@ class optimalDecisionTreeClassifier:
         m.Params.LogToConsole = self.output
         # time limit
         m.Params.timelimit = self.timelimit
+        m.Params.MIPGap = self.MIPGap
         # parallel
         m.params.threads = 0
 
