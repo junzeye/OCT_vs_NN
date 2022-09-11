@@ -16,6 +16,7 @@ parser.add_argument('--a', type=float, required=True,
 parser.add_argument('--d', type=int, required=True, help='depth of the tree')
 parser.add_argument('--s', type=int, required=True, help='random seed value')
 parser.add_argument('--hidden_dim', type=int, required=True)
+# the following three are optional arguments
 parser.add_argument('--min_samples_split', type=int, default=2, 
                     help='leaf node minimum value')
 parser.add_argument('--timelimit', type=int, default=12600) # Gurobi timeout limit (3.5hr)
@@ -24,8 +25,6 @@ parser.add_argument('--data', type=str, default='CTG_width') # name of the datas
 args = parser.parse_args()
 a, d, s, hidden_dim, min_samples_split, data, timelimit = args.a, args.d, args.s, \
     args.hidden_dim, args.min_samples_split, args.data, args.timelimit
-
-print(a, d, s, hidden_dim, min_samples_split, data, timelimit)
 
 '''
 alpha = [0.001, 0.01, 0.1]
@@ -85,3 +84,4 @@ else: # tree has not been trained, so train
     res_oct.to_csv('./res/oct.csv', index=False)
     print(data, 'oct-d{}-a{}'.format(d,a), 
         'train acc:', train_acc, 'val acc:', val_acc, 'gap:', octree.optgap)
+
