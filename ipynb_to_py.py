@@ -6,7 +6,7 @@ import sys,json
 
 f = open('new_experiments.ipynb', 'r') #input.ipynb
 j = json.load(f)
-of = open('new_experiments.py', 'w') #output.py
+of = open('experiment_instance.py', 'w') #output.py
 if j["nbformat"] >=4:
     for i,cell in enumerate(j["cells"]):
             for line in cell["source"]:
