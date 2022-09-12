@@ -1,4 +1,4 @@
-DIM=20
+DIM=40
 SUB="dim_$DIM"
 
 for file in ./slurm_scripts/vary_width/*; do
