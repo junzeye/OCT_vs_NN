@@ -1,4 +1,4 @@
-import time, itertools, sys, warnings, os, argparse
+import time, itertools, sys, warnings, os, json, argparse
 warnings.simplefilter(action='ignore', category=FutureWarning)
 from os import path
 import pandas as pd
@@ -8,7 +8,6 @@ from sklearn.model_selection import train_test_split
 from sklearn import tree
 from tree import optimalDecisionTreeClassifier
 import dataset
-import tree as miptree
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--a', type=float, required=True, 
@@ -69,28 +68,17 @@ if len(row): # if the specific oct is already trained and optimized up to a degr
 else: # tree has not been trained, so train
     octree = optimalDecisionTreeClassifier(max_depth=d, min_samples_split=min_samples_split, alpha=a, warmstart=True,
                                                 timelimit=timelimit, output=True)
-    orig_stdout = sys.stdout
-    filepath = f'synthetic_tests/{data}/logs_dim={hidden_dim}_d={d}_seed={s}_alpha={a}_minLeaf={min_samples_split}.txt'
-    os.makedirs(os.path.dirname(filepath), exist_ok = True)
-    with open(filepath, 'w') as f:
-        sys.stdout = f
-        tick = time.time()
-        
-        octree.fit(x_train, y_train)
-        
-        tock = time.time()
-    
+    tick = time.time()
+    octree.fit(x_train, y_train)
+    tock = time.time()
     train_time = tock - tick
+    
     train_acc = accuracy_score(y_train, octree.predict(x_train))
     val_acc = accuracy_score(y_val, octree.predict(x_val))
     test_acc = accuracy_score(y_test, octree.predict(x_test))
     row = {'instance':data, 'hidden_dim':hidden_dim, 'depth':d, 'alpha':a, 'seed':s, 'train_acc':train_acc, 'val_acc':val_acc,
         'test_acc':test_acc, 'train_time':train_time, 'gap':octree.optgap}
-    res_oct = pd.concat(res_oct, pd.DataFrame.from_records([row]), ignore_index=True)
+    res_oct = pd.concat([res_oct, pd.DataFrame.from_records([row])], ignore_index=True)
     res_oct.to_csv(CSV_FILEPATH, index=False)
-    print(data, 'hidden_dim = {}, oct-d{}-a{}-l{}'.format(hidden_dim, d, a, min_samples_split),
-        'train acc:', row['train_acc'].values[0], 'val acc:', row['val_acc'].values[0],
-        'test acc:', row['test_acc'].values[0],
-        'gap:', row['gap'].values[0])
-
-    sys.stdout = orig_stdout
+    print()
+    print(json.dumps(row, indent = 4))
