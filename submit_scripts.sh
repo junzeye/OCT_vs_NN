@@ -3,6 +3,6 @@ SUB="dim_$DIM"
 
 for file in ./slurm_scripts/vary_width/*; do
     if [[ "$file" == *"$SUB"* ]]; then
-        ECHO $file
+        sbatch $file
     fi
 done
