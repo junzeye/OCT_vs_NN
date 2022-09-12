@@ -46,9 +46,6 @@ if path.isfile(CSV_FILEPATH):
 else:
     res_oct = pd.DataFrame(columns=COLUMNS)
 
-# for debugging
-print(res_oct)
-
 # load data
 x, y = dataset.loadData(data, hidden_dim)
 # data splitting
