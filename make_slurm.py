@@ -22,7 +22,7 @@ for a, d, s, hidden_dim in product(alpha, depth, seeds, hidden_dims):
         '#SBATCH --nodes=1                # node count\n'
         '#SBATCH --ntasks=1               # total number of tasks across all nodes\n'
         '#SBATCH --cpus-per-task=1        # cpu-cores per task (>1 if multi-threaded tasks)\n'
-        '#SBATCH --mem-per-cpu=12G         # memory per cpu-core (4G is default)\n\n'
+        '#SBATCH --mem-per-cpu=18G         # memory per cpu-core (4G is default)\n\n'
         f'#SBATCH --output=./synthetic_tests/CTG_width/out/oct_dim{hidden_dim}_a{a}_d{d}_s{s}.out    # Standard output and error log\n'
         '#SBATCH --time=3:59:00          # total run time limit (HH:MM:SS)\n'
         '#SBATCH --mail-type=fail         # send email if job fails\n'

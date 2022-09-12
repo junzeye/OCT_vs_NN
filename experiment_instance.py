@@ -19,7 +19,7 @@ parser.add_argument('--hidden_dim', type=int, required=True)
 # the following three are optional arguments
 parser.add_argument('--min_samples_split', type=int, default=2, 
                     help='leaf node minimum value')
-parser.add_argument('--timelimit', type=int, default=12600) # Gurobi timeout limit (3.5hr)
+parser.add_argument('--timelimit', type=int, default=13800) # Gurobi timeout limit (3.5hr)
 parser.add_argument('--data', type=str, default='CTG_width') # name of the dataset
 
 args = parser.parse_args()

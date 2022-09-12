@@ -114,3 +114,7 @@ dmypy.json
 .pyre/
 fig/maxflow.pptx
 .idea/*
+
+# test results
+res
+synthetic_tests
