@@ -47,6 +47,9 @@ if path.isfile(CSV_FILEPATH):
 else:
     res_oct = pd.DataFrame(columns=COLUMNS)
 
+# for debugging
+print(res_oct)
+
 # load data
 x, y = dataset.loadData(data, hidden_dim)
 # data splitting
@@ -76,7 +79,6 @@ else: # tree has not been trained, so train
         octree.fit(x_train, y_train)
         
         tock = time.time()
-    sys.stdout = orig_stdout
     
     train_time = tock - tick
     train_acc = accuracy_score(y_train, octree.predict(x_train))
@@ -90,3 +92,5 @@ else: # tree has not been trained, so train
         'train acc:', row['train_acc'].values[0], 'val acc:', row['val_acc'].values[0],
         'test acc:', row['test_acc'].values[0],
         'gap:', row['gap'].values[0])
+
+    sys.stdout = orig_stdout
