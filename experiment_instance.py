@@ -84,7 +84,7 @@ else: # tree has not been trained, so train
     test_acc = accuracy_score(y_test, octree.predict(x_test))
     row = {'instance':data, 'hidden_dim':hidden_dim, 'depth':d, 'alpha':a, 'seed':s, 'train_acc':train_acc, 'val_acc':val_acc,
         'test_acc':test_acc, 'train_time':train_time, 'gap':octree.optgap}
-    res_oct = pd.concat(res_oct, pd.DataFrame.from_records(row), ignore_index=True)
+    res_oct = pd.concat(res_oct, pd.DataFrame.from_records([row]), ignore_index=True)
     res_oct.to_csv(CSV_FILEPATH, index=False)
     print(data, 'hidden_dim = {}, oct-d{}-a{}-l{}'.format(hidden_dim, d, a, min_samples_split),
         'train acc:', row['train_acc'].values[0], 'val acc:', row['val_acc'].values[0],
