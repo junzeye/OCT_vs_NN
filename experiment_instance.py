@@ -36,14 +36,16 @@ seeds = [37, 42, 53] # use of specified random states for experiment reproducibi
 train_ratio = 0.6
 val_ratio = 0.2
 test_ratio = 0.2
+MIPGAP_TOLERANCE = 0.1 # minimum bar to stop retraining model
+CSV_FILEPATH = './res/oct_vary_width.csv'
+COLUMNS= ['instance', 'hidden_dim', 'depth', 'alpha', 'seed', 'train_acc', 'val_acc', 
+        'test_acc', 'train_time', 'gap']
 
 # create or load previously computed results
-res_sk = pd.DataFrame(columns=['instance', 'depth', 'seed', 'train_acc', 'val_acc', 'test_acc', 'train_time'])
-if path.isfile('./res/oct.csv'):
-    res_oct = pd.read_csv('./res/oct.csv')
+if path.isfile(CSV_FILEPATH):
+    res_oct = pd.read_csv(CSV_FILEPATH)
 else:
-    res_oct = pd.DataFrame(columns=['instance', 'depth', 'alpha', 'seed', 
-                                    'train_acc', 'val_acc', 'test_acc', 'train_time', 'gap'])
+    res_oct = pd.DataFrame(columns=COLUMNS)
 
 # load data
 x, y = dataset.loadData(data, hidden_dim)
@@ -54,10 +56,12 @@ x_val, x_test, y_val, y_test = train_test_split(x_test, y_test,
 
 # oct
 row = res_oct[(res_oct['instance'] == data) & (res_oct['depth'] == d) & 
-            (res_oct['alpha'] == a) & (res_oct['seed'] == s) & (res_oct['gap'] <= 0.02)]
+            (res_oct['alpha'] == a) & (res_oct['seed'] == s) & 
+            (res_oct['gap'] <= MIPGAP_TOLERANCE) & (res_oct['hidden_dim'] == hidden_dim)]
 if len(row): # if the specific oct is already trained and optimized up to a degree, we directly print the previously recorded results
-    print(data, 'oct-d{}-a{}'.format(row['depth'].values[0],row['alpha'].values[0]),
+    print(data, 'hidden_dim = {}, oct-d{}-a{}-l{}'.format(hidden_dim, d, a, min_samples_split),
         'train acc:', row['train_acc'].values[0], 'val acc:', row['val_acc'].values[0],
+        'test acc:', row['test_acc'].values[0],
         'gap:', row['gap'].values[0])
 else: # tree has not been trained, so train
     octree = optimalDecisionTreeClassifier(max_depth=d, min_samples_split=min_samples_split, alpha=a, warmstart=True,
@@ -78,10 +82,11 @@ else: # tree has not been trained, so train
     train_acc = accuracy_score(y_train, octree.predict(x_train))
     val_acc = accuracy_score(y_val, octree.predict(x_val))
     test_acc = accuracy_score(y_test, octree.predict(x_test))
-    row = {'instance':data, 'depth':d, 'alpha':a, 'seed':s, 'train_acc':train_acc, 'val_acc':val_acc,
+    row = {'instance':data, 'hidden_dim':hidden_dim, 'depth':d, 'alpha':a, 'seed':s, 'train_acc':train_acc, 'val_acc':val_acc,
         'test_acc':test_acc, 'train_time':train_time, 'gap':octree.optgap}
-    res_oct = res_oct.append(row, ignore_index=True)
-    res_oct.to_csv('./res/oct.csv', index=False)
-    print(data, 'oct-d{}-a{}'.format(d,a), 
-        'train acc:', train_acc, 'val acc:', val_acc, 'gap:', octree.optgap)
-
+    res_oct = pd.concat(res_oct, pd.DataFrame.from_records(row), ignore_index=True)
+    res_oct.to_csv(CSV_FILEPATH, index=False)
+    print(data, 'hidden_dim = {}, oct-d{}-a{}-l{}'.format(hidden_dim, d, a, min_samples_split),
+        'train acc:', row['train_acc'].values[0], 'val acc:', row['val_acc'].values[0],
+        'test acc:', row['test_acc'].values[0],
+        'gap:', row['gap'].values[0])

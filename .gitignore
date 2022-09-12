@@ -116,5 +116,5 @@ fig/maxflow.pptx
 .idea/*
 
 # test results
-res
-synthetic_tests
+res/*
+synthetic_tests/*
