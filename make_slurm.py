@@ -6,7 +6,7 @@ depth = [4,6,8]
 seeds = [37, 42, 53]
 min_samples_splits = [2]
 hidden_dims = [20, 40, 60, 80, 100, 120]
-timelimit = 30
+timelimit = 13800
 
 # create the folder to store all the slurm .out files
 dirpath = 'synthetic_tests/CTG_width'
@@ -27,9 +27,9 @@ for a, d, s, hidden_dim, l in product(alpha, depth, seeds, hidden_dims, min_samp
         '#SBATCH --nodes=1                # node count\n'
         '#SBATCH --ntasks=1               # total number of tasks across all nodes\n'
         '#SBATCH --cpus-per-task=1        # cpu-cores per task (>1 if multi-threaded tasks)\n'
-        '#SBATCH --mem-per-cpu=8G         # memory per cpu-core (4G is default)\n\n'
+        '#SBATCH --mem-per-cpu=18G         # memory per cpu-core (4G is default)\n\n'
         f'#SBATCH --output=./synthetic_tests/CTG_width/oct_dim{hidden_dim}_a{a}_d{d}_l{l}_s{s}.out    # Standard output and error log\n'
-        '#SBATCH --time=01:00:00          # total run time limit (HH:MM:SS)\n'
+        '#SBATCH --time=03:59:00          # total run time limit (HH:MM:SS)\n'
         '#SBATCH --mail-type=fail         # send email if job fails\n'
         '#SBATCH --mail-user=junzey@princeton.edu\n\n'
 
