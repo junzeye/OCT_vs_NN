@@ -26,11 +26,11 @@ We plan to investigate the modeling power of optimally grown classification tree
 
 ### Sample Code
 
-TBD
+TBA
 
 ### Data
 
-TBD
+TBA
 
 ### Credits
 
