@@ -7,6 +7,7 @@ import numpy as np
 
 from sklearn.preprocessing import LabelBinarizer
 
+# see tony_dataset.py for code used to clean the original CTG data
 def loadData(dataname, dim: int):
     """
     Load training and testing data from different datasets. Returns a tuple (x,y)
