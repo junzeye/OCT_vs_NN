@@ -14,7 +14,7 @@ class optimalDecisionTreeClassifier:
     optimal classification tree
     """
     def __init__(self, max_depth=3, min_samples_split=2, alpha=0, warmstart=True, 
-                timelimit=600, MIPGap=0.01, DisplayInterval = 60, output=True):
+                timelimit=600, MIPGap=0.005, DisplayInterval = 60, output=True):
         self.max_depth = max_depth
         self.min_samples_split = min_samples_split
         self.alpha = alpha
