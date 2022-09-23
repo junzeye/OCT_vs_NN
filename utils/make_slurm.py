@@ -1,12 +1,12 @@
 import sys, os
 from itertools import product
 
-alpha = [0.001, 0.01, 0.1]
+alpha = [0.05, 0.01, 0.02]
 depth = [4,6,8]
 seeds = [37, 42, 53]
-min_samples_splits = [2]
+min_samples_splits = [2,3]
 hidden_dims = [20, 40, 60, 80, 100, 120]
-timelimit = 13800
+timelimit = 85800 # 23 hours 50 minutes
 
 # create the folder to store all the slurm .out files
 dirpath = 'synthetic_tests/CTG_width'
@@ -29,7 +29,7 @@ for a, d, s, hidden_dim, l in product(alpha, depth, seeds, hidden_dims, min_samp
         '#SBATCH --cpus-per-task=1        # cpu-cores per task (>1 if multi-threaded tasks)\n'
         '#SBATCH --mem-per-cpu=18G         # memory per cpu-core (4G is default)\n\n'
         f'#SBATCH --output=./synthetic_tests/CTG_width/oct_dim{hidden_dim}_a{a}_d{d}_l{l}_s{s}.out    # Standard output and error log\n'
-        '#SBATCH --time=03:59:00          # total run time limit (HH:MM:SS)\n'
+        '#SBATCH --time=23:59:00          # total run time limit (HH:MM:SS)\n'
         '#SBATCH --mail-type=fail         # send email if job fails\n'
         '#SBATCH --mail-user=junzey@princeton.edu\n\n'
 
