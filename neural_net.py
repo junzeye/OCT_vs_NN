@@ -99,7 +99,7 @@ if __name__ == '__main__':
     data_count = 200
 
     model = Neural_Net(input_dim, hidden_dim, output_dim)
-    # torch.save(model,f = 'model.pt')
+    torch.save(model,f = 'model.pt')
     model = torch.load("model.pt")
 
     model.eval()
