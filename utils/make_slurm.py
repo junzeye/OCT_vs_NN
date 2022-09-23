@@ -30,7 +30,7 @@ for a, d, s, hidden_dim, l in product(alpha, depth, seeds, hidden_dims, min_samp
         '#SBATCH --mem-per-cpu=18G         # memory per cpu-core (4G is default)\n\n'
         f'#SBATCH --output=./synthetic_tests/CTG_width/oct_dim{hidden_dim}_a{a}_d{d}_l{l}_s{s}.out    # Standard output and error log\n'
         '#SBATCH --time=23:59:00          # total run time limit (HH:MM:SS)\n'
-        '#SBATCH --mail-type=fail         # send email if job fails\n'
+        '#SBATCH --mail-type=NONE         # send email if job fails\n'
         '#SBATCH --mail-user=junzey@princeton.edu\n\n'
 
         'module purge\n'

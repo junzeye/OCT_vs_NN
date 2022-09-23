@@ -7,7 +7,7 @@
 
 #SBATCH --output=./synthetic_tests/CTG_width/oct_dim60_a0.01_d4_l3_s37.out    # Standard output and error log
 #SBATCH --time=23:59:00          # total run time limit (HH:MM:SS)
-#SBATCH --mail-type=fail         # send email if job fails
+#SBATCH --mail-type=NONE         # send email if job fails
 #SBATCH --mail-user=junzey@princeton.edu
 
 module purge
