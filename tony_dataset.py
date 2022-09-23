@@ -4,7 +4,9 @@ import pandas as pd
 import numpy as np
 
 class CTGdataset(Dataset):
-
+    '''
+    Dataset cleanser used to clean the raw CTG dataset downloaded from UCI
+    '''
     def __init__(self, _class:int = 10):
 
         df = pd.read_csv('./data/CTG/CTG.csv', skiprows = 1, header=None, delimiter=',')
