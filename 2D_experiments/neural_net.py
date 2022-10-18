@@ -7,23 +7,40 @@ class Neural_Net(nn.Module):
     '''
     An untrained neural network
     '''
-    def __init__(self, input_dim, hidden_dim, output_dim):
+    def __init__(self, input_dim, hidden_dim, output_dim, dropout_rate: float):
         super(Neural_Net, self).__init__()
+        assert(dropout_rate <= 1 and dropout_rate >= 0)
+
         # Linear function 1
-        self.fc1 = nn.Linear(input_dim, hidden_dim) 
+        self.fc1 = nn.Linear(input_dim, hidden_dim)         
         # Non-linearity 1
         self.sigmoid1 = nn.Sigmoid()
+        self.drop1 = nn.Dropout(dropout_rate)  # 50% Probability
 
-        # Linear function 2 (readout)
-        self.fc2 = nn.Linear(hidden_dim, output_dim)  
+        # Linear function 2
+        self.fc2 = nn.Linear(hidden_dim, hidden_dim)         
+        # Non-linearity 2
+        self.sigmoid2 = nn.Sigmoid()
+        self.drop2 = nn.Dropout(dropout_rate)  # 50% Probability
+
+        # Linear function 3 (readout)
+        self.fc3 = nn.Linear(hidden_dim, output_dim)  
 
     def forward(self, x):
         # Linear function 1
         out = self.fc1(x)
         # Non-linearity 1
         out = self.sigmoid1(out)
-        # Linear function 2 (readout)
+        out = self.drop1(out)
+
+        # Linear function 2
         out = self.fc2(out)
+        # Non-linearity 2
+        out = self.sigmoid2(out)
+        out = self.drop2(out)
+
+        # Linear function 3 (readout)
+        out = self.fc3(out)
         return out
 
 # Train the neural network with the given hyperparameters
