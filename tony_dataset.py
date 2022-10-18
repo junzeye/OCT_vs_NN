@@ -3,6 +3,24 @@ from torch.utils.data import Dataset, DataLoader
 import pandas as pd
 import numpy as np
 
+class CleanDataset(Dataset):
+    '''
+    Dataset where the features and labels do not require further cleaning.
+    '''
+    def __init__(self, x: np.ndarray, y: np.ndarray):
+        '''
+        x should be a mxn ndarray where m is the number of datapoints and n
+        the number of features.
+        '''
+        self.x=torch.tensor(x, dtype=torch.float32)
+        self.y=torch.tensor(y, dtype=torch.long)
+ 
+    def __len__(self):
+        return len(self.y)
+   
+    def __getitem__(self,idx):
+        return self.x[idx], self.y[idx]
+
 class CTGdataset(Dataset):
     '''
     Dataset cleanser used to clean the raw CTG dataset downloaded from UCI
