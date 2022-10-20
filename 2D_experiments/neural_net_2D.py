@@ -1,7 +1,7 @@
 import torch
 import torch.nn as nn
-from torch.utils.data import DataLoader
-from tony_dataset import CTGdataset
+# from torch.utils.data import DataLoader
+# from tony_dataset_2D import CTGdataset
 
 class Neural_Net(nn.Module):
     '''
@@ -14,13 +14,13 @@ class Neural_Net(nn.Module):
         # Linear function 1
         self.fc1 = nn.Linear(input_dim, hidden_dim)         
         # Non-linearity 1
-        self.sigmoid1 = nn.Sigmoid()
+        self.sigmoid1 = nn.ReLU()
         self.drop1 = nn.Dropout(dropout_rate)  # 50% Probability
 
         # Linear function 2
         self.fc2 = nn.Linear(hidden_dim, hidden_dim)         
         # Non-linearity 2
-        self.sigmoid2 = nn.Sigmoid()
+        self.sigmoid2 = nn.ReLU()
         self.drop2 = nn.Dropout(dropout_rate)  # 50% Probability
 
         # Linear function 3 (readout)
