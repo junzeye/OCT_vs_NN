@@ -1,200 +1,200 @@
 [INFO]: Epoch 1 of 100
-Loss: 0.45354461669921875, Training Accuracy: 85.33333587646484, Test Accuracy: 86.66666412353516.
+Loss: 0.6900103688240051, Training Accuracy: 49.25925827026367, Test Accuracy: 48.66666793823242.
 [INFO]: Epoch 2 of 100
-Loss: 0.5138939023017883, Training Accuracy: 87.48148345947266, Test Accuracy: 89.33333587646484.
+Loss: 0.6862779855728149, Training Accuracy: 51.48147964477539, Test Accuracy: 48.0.
 [INFO]: Epoch 3 of 100
-Loss: 0.2976932227611542, Training Accuracy: 88.0740737915039, Test Accuracy: 90.0.
+Loss: 0.670245349407196, Training Accuracy: 59.62963104248047, Test Accuracy: 62.0.
 [INFO]: Epoch 4 of 100
-Loss: 0.2763863205909729, Training Accuracy: 89.77777862548828, Test Accuracy: 91.33333587646484.
+Loss: 0.653323769569397, Training Accuracy: 67.55555725097656, Test Accuracy: 64.66666412353516.
 [INFO]: Epoch 5 of 100
-Loss: 0.16675913333892822, Training Accuracy: 91.11111450195312, Test Accuracy: 92.66666412353516.
+Loss: 0.6223466992378235, Training Accuracy: 75.03704071044922, Test Accuracy: 80.66666412353516.
 [INFO]: Epoch 6 of 100
-Loss: 0.19122129678726196, Training Accuracy: 92.66666412353516, Test Accuracy: 93.33333587646484.
+Loss: 0.6191971898078918, Training Accuracy: 75.62963104248047, Test Accuracy: 80.66666412353516.
 [INFO]: Epoch 7 of 100
-Loss: 0.1566573828458786, Training Accuracy: 93.77777862548828, Test Accuracy: 94.66666412353516.
+Loss: 0.5878747701644897, Training Accuracy: 79.25926208496094, Test Accuracy: 79.33333587646484.
 [INFO]: Epoch 8 of 100
-Loss: 0.11092924326658249, Training Accuracy: 95.77777862548828, Test Accuracy: 95.33333587646484.
+Loss: 0.5117359161376953, Training Accuracy: 81.85185241699219, Test Accuracy: 81.33333587646484.
 [INFO]: Epoch 9 of 100
-Loss: 0.0651058554649353, Training Accuracy: 97.70370483398438, Test Accuracy: 98.0.
+Loss: 0.5727539658546448, Training Accuracy: 80.81481170654297, Test Accuracy: 82.0.
 [INFO]: Epoch 10 of 100
-Loss: 0.05141701549291611, Training Accuracy: 98.88888549804688, Test Accuracy: 100.0.
+Loss: 0.4509197473526001, Training Accuracy: 83.48148345947266, Test Accuracy: 84.66666412353516.
 [INFO]: Epoch 11 of 100
-Loss: 0.08404459059238434, Training Accuracy: 99.48148345947266, Test Accuracy: 100.0.
+Loss: 0.5461246371269226, Training Accuracy: 83.85185241699219, Test Accuracy: 81.33333587646484.
 [INFO]: Epoch 12 of 100
-Loss: 0.018031610175967216, Training Accuracy: 99.9259262084961, Test Accuracy: 100.0.
+Loss: 0.39514246582984924, Training Accuracy: 83.9259262084961, Test Accuracy: 80.66666412353516.
 [INFO]: Epoch 13 of 100
-Loss: 0.018840303644537926, Training Accuracy: 100.0, Test Accuracy: 100.0.
+Loss: 0.4789460301399231, Training Accuracy: 83.25926208496094, Test Accuracy: 80.0.
 [INFO]: Epoch 14 of 100
-Loss: 0.020605504512786865, Training Accuracy: 100.0, Test Accuracy: 100.0.
+Loss: 0.43767523765563965, Training Accuracy: 84.0, Test Accuracy: 81.33333587646484.
 [INFO]: Epoch 15 of 100
-Loss: 0.014422017149627209, Training Accuracy: 100.0, Test Accuracy: 100.0.
+Loss: 0.4805212914943695, Training Accuracy: 81.9259262084961, Test Accuracy: 83.33333587646484.
 [INFO]: Epoch 16 of 100
-Loss: 0.018071401864290237, Training Accuracy: 100.0, Test Accuracy: 100.0.
+Loss: 0.46492519974708557, Training Accuracy: 83.55555725097656, Test Accuracy: 81.33333587646484.
 [INFO]: Epoch 17 of 100
-Loss: 0.007101348135620356, Training Accuracy: 100.0, Test Accuracy: 100.0.
+Loss: 0.3622594475746155, Training Accuracy: 83.55555725097656, Test Accuracy: 81.33333587646484.
 [INFO]: Epoch 18 of 100
-Loss: 0.006221625953912735, Training Accuracy: 100.0, Test Accuracy: 100.0.
+Loss: 0.3026568591594696, Training Accuracy: 83.77777862548828, Test Accuracy: 82.0.
 [INFO]: Epoch 19 of 100
-Loss: 0.006347626447677612, Training Accuracy: 100.0, Test Accuracy: 100.0.
+Loss: 0.3147153854370117, Training Accuracy: 83.33333587646484, Test Accuracy: 79.33333587646484.
 [INFO]: Epoch 20 of 100
-Loss: 0.003297325922176242, Training Accuracy: 100.0, Test Accuracy: 100.0.
+Loss: 0.34864261746406555, Training Accuracy: 83.33333587646484, Test Accuracy: 81.33333587646484.
 [INFO]: Epoch 21 of 100
-Loss: 0.009730386547744274, Training Accuracy: 100.0, Test Accuracy: 100.0.
+Loss: 0.30242154002189636, Training Accuracy: 84.0, Test Accuracy: 81.33333587646484.
 [INFO]: Epoch 22 of 100
-Loss: 0.003881745273247361, Training Accuracy: 100.0, Test Accuracy: 100.0.
+Loss: 0.36168819665908813, Training Accuracy: 84.0, Test Accuracy: 82.66666412353516.
 [INFO]: Epoch 23 of 100
-Loss: 0.004072507843375206, Training Accuracy: 100.0, Test Accuracy: 100.0.
+Loss: 0.40643298625946045, Training Accuracy: 83.62963104248047, Test Accuracy: 82.0.
 [INFO]: Epoch 24 of 100
-Loss: 0.004947205074131489, Training Accuracy: 100.0, Test Accuracy: 100.0.
+Loss: 0.6098782420158386, Training Accuracy: 83.55555725097656, Test Accuracy: 79.33333587646484.
 [INFO]: Epoch 25 of 100
-Loss: 0.0020232636015862226, Training Accuracy: 100.0, Test Accuracy: 100.0.
+Loss: 0.4121396243572235, Training Accuracy: 83.85185241699219, Test Accuracy: 79.33333587646484.
 [INFO]: Epoch 26 of 100
-Loss: 0.0019511986756697297, Training Accuracy: 100.0, Test Accuracy: 100.0.
+Loss: 0.3466351628303528, Training Accuracy: 83.33333587646484, Test Accuracy: 80.0.
 [INFO]: Epoch 27 of 100
-Loss: 0.002879597246646881, Training Accuracy: 100.0, Test Accuracy: 100.0.
+Loss: 0.25357866287231445, Training Accuracy: 83.11111450195312, Test Accuracy: 80.0.
 [INFO]: Epoch 28 of 100
-Loss: 0.0024276021867990494, Training Accuracy: 100.0, Test Accuracy: 100.0.
+Loss: 0.282993882894516, Training Accuracy: 84.14814758300781, Test Accuracy: 80.66666412353516.
 [INFO]: Epoch 29 of 100
-Loss: 0.001377304084599018, Training Accuracy: 100.0, Test Accuracy: 100.0.
+Loss: 0.40790560841560364, Training Accuracy: 83.55555725097656, Test Accuracy: 79.33333587646484.
 [INFO]: Epoch 30 of 100
-Loss: 0.0017125123413279653, Training Accuracy: 100.0, Test Accuracy: 100.0.
+Loss: 0.23597396910190582, Training Accuracy: 83.9259262084961, Test Accuracy: 80.66666412353516.
 [INFO]: Epoch 31 of 100
-Loss: 0.0028642150573432446, Training Accuracy: 100.0, Test Accuracy: 100.0.
+Loss: 0.3316417634487152, Training Accuracy: 84.0, Test Accuracy: 82.66666412353516.
 [INFO]: Epoch 32 of 100
-Loss: 0.0011467288713902235, Training Accuracy: 100.0, Test Accuracy: 100.0.
+Loss: 0.4214556813240051, Training Accuracy: 84.0740737915039, Test Accuracy: 79.33333587646484.
 [INFO]: Epoch 33 of 100
-Loss: 0.0013062277575954795, Training Accuracy: 100.0, Test Accuracy: 100.0.
+Loss: 0.3634602725505829, Training Accuracy: 84.0, Test Accuracy: 83.33333587646484.
 [INFO]: Epoch 34 of 100
-Loss: 0.0019034035503864288, Training Accuracy: 100.0, Test Accuracy: 100.0.
+Loss: 0.4821356534957886, Training Accuracy: 84.0, Test Accuracy: 82.0.
 [INFO]: Epoch 35 of 100
-Loss: 0.0018454231321811676, Training Accuracy: 100.0, Test Accuracy: 100.0.
+Loss: 0.3846812844276428, Training Accuracy: 83.48148345947266, Test Accuracy: 79.33333587646484.
 [INFO]: Epoch 36 of 100
-Loss: 0.0017088778549805284, Training Accuracy: 100.0, Test Accuracy: 100.0.
+Loss: 0.3884827792644501, Training Accuracy: 84.0, Test Accuracy: 81.33333587646484.
 [INFO]: Epoch 37 of 100
-Loss: 0.0009133816347457469, Training Accuracy: 100.0, Test Accuracy: 100.0.
+Loss: 0.34621337056159973, Training Accuracy: 83.85185241699219, Test Accuracy: 83.33333587646484.
 [INFO]: Epoch 38 of 100
-Loss: 0.0011617990676313639, Training Accuracy: 100.0, Test Accuracy: 100.0.
+Loss: 0.5039831399917603, Training Accuracy: 83.48148345947266, Test Accuracy: 79.33333587646484.
 [INFO]: Epoch 39 of 100
-Loss: 0.0005007488653063774, Training Accuracy: 100.0, Test Accuracy: 100.0.
+Loss: 0.2754843533039093, Training Accuracy: 83.48148345947266, Test Accuracy: 80.0.
 [INFO]: Epoch 40 of 100
-Loss: 0.0005183249013498425, Training Accuracy: 100.0, Test Accuracy: 100.0.
+Loss: 0.34576916694641113, Training Accuracy: 84.44444274902344, Test Accuracy: 82.0.
 [INFO]: Epoch 41 of 100
-Loss: 0.000741685158573091, Training Accuracy: 100.0, Test Accuracy: 100.0.
+Loss: 0.5066202282905579, Training Accuracy: 83.48148345947266, Test Accuracy: 84.0.
 [INFO]: Epoch 42 of 100
-Loss: 0.0009515772690065205, Training Accuracy: 100.0, Test Accuracy: 100.0.
+Loss: 0.3098117709159851, Training Accuracy: 84.0, Test Accuracy: 80.0.
 [INFO]: Epoch 43 of 100
-Loss: 0.000535683473572135, Training Accuracy: 100.0, Test Accuracy: 100.0.
+Loss: 0.3963606655597687, Training Accuracy: 83.62963104248047, Test Accuracy: 80.0.
 [INFO]: Epoch 44 of 100
-Loss: 0.0013633182970806956, Training Accuracy: 100.0, Test Accuracy: 100.0.
+Loss: 0.4623061716556549, Training Accuracy: 84.37036895751953, Test Accuracy: 81.33333587646484.
 [INFO]: Epoch 45 of 100
-Loss: 0.0012010299833491445, Training Accuracy: 100.0, Test Accuracy: 100.0.
+Loss: 0.4403397738933563, Training Accuracy: 83.62963104248047, Test Accuracy: 80.66666412353516.
 [INFO]: Epoch 46 of 100
-Loss: 0.0009444137685932219, Training Accuracy: 100.0, Test Accuracy: 100.0.
+Loss: 0.3202153444290161, Training Accuracy: 84.14814758300781, Test Accuracy: 80.0.
 [INFO]: Epoch 47 of 100
-Loss: 0.0003523487539496273, Training Accuracy: 100.0, Test Accuracy: 100.0.
+Loss: 0.4246896505355835, Training Accuracy: 83.9259262084961, Test Accuracy: 80.0.
 [INFO]: Epoch 48 of 100
-Loss: 0.0007219214458018541, Training Accuracy: 100.0, Test Accuracy: 100.0.
+Loss: 0.29072025418281555, Training Accuracy: 83.9259262084961, Test Accuracy: 81.33333587646484.
 [INFO]: Epoch 49 of 100
-Loss: 0.00031820364529266953, Training Accuracy: 100.0, Test Accuracy: 100.0.
+Loss: 0.4194270074367523, Training Accuracy: 83.85185241699219, Test Accuracy: 80.0.
 [INFO]: Epoch 50 of 100
-Loss: 0.0004146271094214171, Training Accuracy: 100.0, Test Accuracy: 100.0.
+Loss: 0.4090399444103241, Training Accuracy: 84.0, Test Accuracy: 80.0.
 [INFO]: Epoch 51 of 100
-Loss: 0.0011027592699974775, Training Accuracy: 100.0, Test Accuracy: 100.0.
+Loss: 0.29908427596092224, Training Accuracy: 83.55555725097656, Test Accuracy: 80.66666412353516.
 [INFO]: Epoch 52 of 100
-Loss: 0.0006451639346778393, Training Accuracy: 100.0, Test Accuracy: 100.0.
+Loss: 0.4351370334625244, Training Accuracy: 83.25926208496094, Test Accuracy: 79.33333587646484.
 [INFO]: Epoch 53 of 100
-Loss: 0.0007735727704130113, Training Accuracy: 100.0, Test Accuracy: 100.0.
+Loss: 0.4329949915409088, Training Accuracy: 83.33333587646484, Test Accuracy: 80.0.
 [INFO]: Epoch 54 of 100
-Loss: 0.000326489593135193, Training Accuracy: 100.0, Test Accuracy: 100.0.
+Loss: 0.3899506628513336, Training Accuracy: 84.29629516601562, Test Accuracy: 82.0.
 [INFO]: Epoch 55 of 100
-Loss: 0.0007845190120860934, Training Accuracy: 100.0, Test Accuracy: 100.0.
+Loss: 0.2539544105529785, Training Accuracy: 83.33333587646484, Test Accuracy: 79.33333587646484.
 [INFO]: Epoch 56 of 100
-Loss: 0.0002260126348119229, Training Accuracy: 100.0, Test Accuracy: 100.0.
+Loss: 0.2659391164779663, Training Accuracy: 83.55555725097656, Test Accuracy: 79.33333587646484.
 [INFO]: Epoch 57 of 100
-Loss: 0.00024359261442441493, Training Accuracy: 100.0, Test Accuracy: 100.0.
+Loss: 0.3416195213794708, Training Accuracy: 83.48148345947266, Test Accuracy: 79.33333587646484.
 [INFO]: Epoch 58 of 100
-Loss: 0.00035549249150790274, Training Accuracy: 100.0, Test Accuracy: 100.0.
+Loss: 0.39175212383270264, Training Accuracy: 84.51851654052734, Test Accuracy: 82.0.
 [INFO]: Epoch 59 of 100
-Loss: 0.0006441131699830294, Training Accuracy: 100.0, Test Accuracy: 100.0.
+Loss: 0.42262890934944153, Training Accuracy: 83.9259262084961, Test Accuracy: 84.0.
 [INFO]: Epoch 60 of 100
-Loss: 0.0006463435129262507, Training Accuracy: 100.0, Test Accuracy: 100.0.
+Loss: 0.2875768542289734, Training Accuracy: 84.0, Test Accuracy: 80.0.
 [INFO]: Epoch 61 of 100
-Loss: 0.0007873817812651396, Training Accuracy: 100.0, Test Accuracy: 100.0.
+Loss: 0.3817705512046814, Training Accuracy: 83.48148345947266, Test Accuracy: 79.33333587646484.
 [INFO]: Epoch 62 of 100
-Loss: 0.0002641980827320367, Training Accuracy: 100.0, Test Accuracy: 100.0.
+Loss: 0.24767425656318665, Training Accuracy: 84.37036895751953, Test Accuracy: 82.0.
 [INFO]: Epoch 63 of 100
-Loss: 0.0007020746706984937, Training Accuracy: 100.0, Test Accuracy: 100.0.
+Loss: 0.30328816175460815, Training Accuracy: 84.51851654052734, Test Accuracy: 81.33333587646484.
 [INFO]: Epoch 64 of 100
-Loss: 0.0001536598283564672, Training Accuracy: 100.0, Test Accuracy: 100.0.
+Loss: 0.2801763415336609, Training Accuracy: 83.33333587646484, Test Accuracy: 79.33333587646484.
 [INFO]: Epoch 65 of 100
-Loss: 0.0006497142603620887, Training Accuracy: 100.0, Test Accuracy: 100.0.
+Loss: 0.43585583567619324, Training Accuracy: 83.55555725097656, Test Accuracy: 80.0.
 [INFO]: Epoch 66 of 100
-Loss: 0.00026328733656555414, Training Accuracy: 100.0, Test Accuracy: 100.0.
+Loss: 0.32218822836875916, Training Accuracy: 82.96295928955078, Test Accuracy: 79.33333587646484.
 [INFO]: Epoch 67 of 100
-Loss: 0.000439919502241537, Training Accuracy: 100.0, Test Accuracy: 100.0.
+Loss: 0.3322872519493103, Training Accuracy: 84.0740737915039, Test Accuracy: 81.33333587646484.
 [INFO]: Epoch 68 of 100
-Loss: 0.00022579521464649588, Training Accuracy: 100.0, Test Accuracy: 100.0.
+Loss: 0.4140947759151459, Training Accuracy: 84.0, Test Accuracy: 83.33333587646484.
 [INFO]: Epoch 69 of 100
-Loss: 0.00033004622673615813, Training Accuracy: 100.0, Test Accuracy: 100.0.
+Loss: 0.4063943922519684, Training Accuracy: 84.22222137451172, Test Accuracy: 82.0.
 [INFO]: Epoch 70 of 100
-Loss: 0.00029138571699149907, Training Accuracy: 100.0, Test Accuracy: 100.0.
+Loss: 0.36246049404144287, Training Accuracy: 83.9259262084961, Test Accuracy: 82.66666412353516.
 [INFO]: Epoch 71 of 100
-Loss: 0.0003637117915786803, Training Accuracy: 100.0, Test Accuracy: 100.0.
+Loss: 0.23425935208797455, Training Accuracy: 83.11111450195312, Test Accuracy: 79.33333587646484.
 [INFO]: Epoch 72 of 100
-Loss: 0.00015990999236237258, Training Accuracy: 100.0, Test Accuracy: 100.0.
+Loss: 0.23849761486053467, Training Accuracy: 84.0, Test Accuracy: 79.33333587646484.
 [INFO]: Epoch 73 of 100
-Loss: 0.0004901139182038605, Training Accuracy: 100.0, Test Accuracy: 100.0.
+Loss: 0.43076956272125244, Training Accuracy: 84.37036895751953, Test Accuracy: 82.0.
 [INFO]: Epoch 74 of 100
-Loss: 0.0004335383418947458, Training Accuracy: 100.0, Test Accuracy: 100.0.
+Loss: 0.26185142993927, Training Accuracy: 84.59259033203125, Test Accuracy: 82.0.
 [INFO]: Epoch 75 of 100
-Loss: 0.00023202433658298105, Training Accuracy: 100.0, Test Accuracy: 100.0.
+Loss: 0.3862180709838867, Training Accuracy: 84.22222137451172, Test Accuracy: 82.0.
 [INFO]: Epoch 76 of 100
-Loss: 0.00022285657178144902, Training Accuracy: 100.0, Test Accuracy: 100.0.
+Loss: 0.36150315403938293, Training Accuracy: 83.48148345947266, Test Accuracy: 79.33333587646484.
 [INFO]: Epoch 77 of 100
-Loss: 6.275611667660996e-05, Training Accuracy: 100.0, Test Accuracy: 100.0.
+Loss: 0.32255035638809204, Training Accuracy: 83.62963104248047, Test Accuracy: 83.33333587646484.
 [INFO]: Epoch 78 of 100
-Loss: 0.0005752933793701231, Training Accuracy: 100.0, Test Accuracy: 100.0.
+Loss: 0.24921827018260956, Training Accuracy: 84.44444274902344, Test Accuracy: 80.66666412353516.
 [INFO]: Epoch 79 of 100
-Loss: 0.0001028232800308615, Training Accuracy: 100.0, Test Accuracy: 100.0.
+Loss: 0.3409934937953949, Training Accuracy: 84.44444274902344, Test Accuracy: 82.0.
 [INFO]: Epoch 80 of 100
-Loss: 0.00012888162746094167, Training Accuracy: 100.0, Test Accuracy: 100.0.
+Loss: 0.30596259236335754, Training Accuracy: 84.44444274902344, Test Accuracy: 82.66666412353516.
 [INFO]: Epoch 81 of 100
-Loss: 0.0004467772087082267, Training Accuracy: 100.0, Test Accuracy: 100.0.
+Loss: 0.3346289098262787, Training Accuracy: 83.62963104248047, Test Accuracy: 80.0.
 [INFO]: Epoch 82 of 100
-Loss: 0.00022948546393308789, Training Accuracy: 100.0, Test Accuracy: 100.0.
+Loss: 0.4051142632961273, Training Accuracy: 84.29629516601562, Test Accuracy: 82.66666412353516.
 [INFO]: Epoch 83 of 100
-Loss: 0.00010545743862167001, Training Accuracy: 100.0, Test Accuracy: 100.0.
+Loss: 0.278597354888916, Training Accuracy: 84.51851654052734, Test Accuracy: 82.0.
 [INFO]: Epoch 84 of 100
-Loss: 0.00011998243280686438, Training Accuracy: 100.0, Test Accuracy: 100.0.
+Loss: 0.3160461485385895, Training Accuracy: 83.85185241699219, Test Accuracy: 82.66666412353516.
 [INFO]: Epoch 85 of 100
-Loss: 0.00012779863027390093, Training Accuracy: 100.0, Test Accuracy: 100.0.
+Loss: 0.39824748039245605, Training Accuracy: 83.48148345947266, Test Accuracy: 80.0.
 [INFO]: Epoch 86 of 100
-Loss: 6.986816151766106e-05, Training Accuracy: 100.0, Test Accuracy: 100.0.
+Loss: 0.46468859910964966, Training Accuracy: 84.44444274902344, Test Accuracy: 82.66666412353516.
 [INFO]: Epoch 87 of 100
-Loss: 4.893199366051704e-05, Training Accuracy: 100.0, Test Accuracy: 100.0.
+Loss: 0.3824487030506134, Training Accuracy: 84.0740737915039, Test Accuracy: 82.0.
 [INFO]: Epoch 88 of 100
-Loss: 0.00010482349171070382, Training Accuracy: 100.0, Test Accuracy: 100.0.
+Loss: 0.34477904438972473, Training Accuracy: 84.29629516601562, Test Accuracy: 80.66666412353516.
 [INFO]: Epoch 89 of 100
-Loss: 7.155746425269172e-05, Training Accuracy: 100.0, Test Accuracy: 100.0.
+Loss: 0.25138959288597107, Training Accuracy: 83.55555725097656, Test Accuracy: 79.33333587646484.
 [INFO]: Epoch 90 of 100
-Loss: 6.979278259677812e-05, Training Accuracy: 100.0, Test Accuracy: 100.0.
+Loss: 0.29222172498703003, Training Accuracy: 84.37036895751953, Test Accuracy: 82.66666412353516.
 [INFO]: Epoch 91 of 100
-Loss: 0.00017601359286345541, Training Accuracy: 100.0, Test Accuracy: 100.0.
+Loss: 0.3319154381752014, Training Accuracy: 84.22222137451172, Test Accuracy: 80.66666412353516.
 [INFO]: Epoch 92 of 100
-Loss: 0.0002106361644109711, Training Accuracy: 100.0, Test Accuracy: 100.0.
+Loss: 0.3365594148635864, Training Accuracy: 84.51851654052734, Test Accuracy: 82.0.
 [INFO]: Epoch 93 of 100
-Loss: 0.00016854309069458395, Training Accuracy: 100.0, Test Accuracy: 100.0.
+Loss: 0.3326665759086609, Training Accuracy: 83.03704071044922, Test Accuracy: 79.33333587646484.
 [INFO]: Epoch 94 of 100
-Loss: 6.152339483378455e-05, Training Accuracy: 100.0, Test Accuracy: 100.0.
+Loss: 0.4503558874130249, Training Accuracy: 84.0740737915039, Test Accuracy: 82.0.
 [INFO]: Epoch 95 of 100
-Loss: 5.605081605608575e-05, Training Accuracy: 100.0, Test Accuracy: 100.0.
+Loss: 0.3592354655265808, Training Accuracy: 84.0, Test Accuracy: 80.66666412353516.
 [INFO]: Epoch 96 of 100
-Loss: 0.0001624236028874293, Training Accuracy: 100.0, Test Accuracy: 100.0.
+Loss: 0.3538910746574402, Training Accuracy: 83.85185241699219, Test Accuracy: 79.33333587646484.
 [INFO]: Epoch 97 of 100
-Loss: 0.00016923177463468164, Training Accuracy: 100.0, Test Accuracy: 100.0.
+Loss: 0.31956684589385986, Training Accuracy: 84.22222137451172, Test Accuracy: 81.33333587646484.
 [INFO]: Epoch 98 of 100
-Loss: 9.344751015305519e-05, Training Accuracy: 100.0, Test Accuracy: 100.0.
+Loss: 0.3419927954673767, Training Accuracy: 83.33333587646484, Test Accuracy: 84.66666412353516.
 [INFO]: Epoch 99 of 100
-Loss: 6.480073352577165e-05, Training Accuracy: 100.0, Test Accuracy: 100.0.
+Loss: 0.4363640546798706, Training Accuracy: 83.85185241699219, Test Accuracy: 80.66666412353516.
 [INFO]: Epoch 100 of 100
-Loss: 4.721772711491212e-05, Training Accuracy: 100.0, Test Accuracy: 100.0.
+Loss: 0.33317244052886963, Training Accuracy: 84.22222137451172, Test Accuracy: 80.66666412353516.
