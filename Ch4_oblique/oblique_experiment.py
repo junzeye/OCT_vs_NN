@@ -1,3 +1,5 @@
+# To allow for proper module referencing, set the pwd to be 
+
 import time, itertools, sys, warnings, os, json
 warnings.simplefilter(action='ignore', category=FutureWarning)
 from os import path

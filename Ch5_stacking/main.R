@@ -1,5 +1,5 @@
-# Comment out when running on della
-# setwd("/Users/myhouse/Desktop/thesis_experiments")
+# Make sure to set the correct present working directory
+# setwd("path_to_this_subdirectory")
 #----------------------------
 source("auc_calc.R")
 source("dataloader.R")
@@ -47,8 +47,6 @@ for (SEED in SEEDS) {
     train = df[inds$train, ]
     test = df[inds$test, ]
     folds = create_folds(train[,1], k = 5, m_rep = 3, seed = SEED)
-    # temp = stacking.auc(train, test, folds, inds)
-    # auc.sum = auc.sum + temp
     tryCatch(
         {
             temp = stacking.auc(train, test, folds, inds)

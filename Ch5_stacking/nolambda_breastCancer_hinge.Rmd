@@ -10,6 +10,9 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ```{r}
+# Make sure to set the correct present working directory
+# setwd("path_to_this_subdirectory")
+
 # Load libraries
 library(splitTools)
 library(tree)
@@ -68,7 +71,7 @@ for (fold in folds){
                                     minsize = 5, mindev = 0.0001)
                    )
     # preds[i, j]: the j-th prediction made by the pruned tree with num.nodes[i] 
-    # terminal nodes. 0 â‰¤ j â‰¤ length(validation set)
+    # terminal nodes. 0 â‰? j â‰? length(validation set)
     for (i in seq_along(num.nodes)) {
         curr.tree = prune.tree(parent.tree, best = num.nodes[i])
         preds[-fold, i] = predict(curr.tree, valid.set)
