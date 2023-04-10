@@ -27,7 +27,7 @@ This is by no means an exhaustive list. I do my best to give credits and apologi
 ### Algorithm Credits
 
 - D. Bertsimas & J. Dunn. Optimal classification trees. Machine Learning, 106(7), 1039-1082 (2017).
-- L. Breiman. Stacked regressions. Mach Learn 24, 49¨C64 (1996).
+- L. Breiman. Stacked regressions. Mach Learn 24, 49-64 (1996).
 - D.C. Wickramarachchi, B.L. Robertson, M. Reale, C.J. Price, J. Brown. HHCART: An oblique decision tree,
 Computational Statistics & Data Analysis, Volume 96, 12-23 (2016).
 

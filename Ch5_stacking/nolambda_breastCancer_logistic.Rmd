@@ -1,0 +1,225 @@
+---
+title: "stacking_trees"
+author: "Tony Ye"
+date: "3/14/2023"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE)
+```
+
+```{r}
+# Method for counting the number of leaf nodes in a tree object - for r tree package
+count_leaf <- function(t) {
+    isLeaf = t$frame$var == "<leaf>" # TRUE if node is leaf
+    return(sum(isLeaf))
+}
+# count_leaf(parent.tree)
+```
+
+```{r}
+# Load libraries
+library(splitTools)
+library(tree)
+library(CVXR)
+library(nonet) # banknote_authentication dataset
+library(pROC)
+suppressWarnings(library(randomForest))
+```
+
+```{r}
+SEED = 7
+
+df = read.csv("wdbc.data", header = FALSE)
+df = subset(df, select = -c(1)) # drop the first column (patient ID)
+df[,1][df[,1] == "M"] = 1
+df[,1][df[,1] == "B"] = 0 # relabel binary class to be {0, 1} -> not {-1,1}, since we are talking about logistic loss
+df[,1] = as.numeric(df[,1])
+```
+
+```{r}
+# num.nodes = seq(2,15) # minimum number of terminal nodes allowed for each subtree
+num.nodes = seq(2,17)
+set.seed(SEED)
+
+# Split into training and test
+inds = partition(df[,1], p = c(train = 0.8, test = 0.2), seed = SEED)
+
+train = df[inds$train, ]
+test = df[inds$test, ]
+# Repeated, stratified cross-validation folds
+folds = create_folds(train[,1], k = 5, m_rep = 3, seed = SEED)
+```
+
+```{r}
+parent.tree = tree(V2 ~., df,
+               control = 
+                   tree.control(nrow(df), mincut = 1, 
+                                minsize = 2, mindev = 0)
+               )
+summary(parent.tree)
+```
+Maximum tree: 16 terminal nodes
+
+```{r}
+preds = matrix(0, nrow(train), length(num.nodes))
+
+# stratified K-fold CV
+for (fold in folds){
+    valid.set = train[-fold, ]
+    nrow.valid = nrow(valid.set)
+    # genesis tree to be pruned
+    parent.tree = tree(V2 ~., train[fold, ],
+                   control = 
+                       tree.control(nrow(train[fold, ]), mincut = 1, 
+                                    minsize = 2, mindev = 0)
+                   )
+    # preds[i, j]: the j-th prediction made by the pruned tree with num.nodes[i] 
+    # terminal nodes. 0 ≤ j ≤ length(validation set)
+    for (i in seq_along(num.nodes)) {
+        curr.tree = prune.tree(parent.tree, best = num.nodes[i])
+        preds[-fold, i] = predict(curr.tree, valid.set)
+    }
+}
+
+alphas = Variable(length(num.nodes)) # CVXR variables
+preds.weighted = preds %*% alphas
+y = train[, 1]
+
+obj = (1 / nrow(train)) * sum_entries( - y * log(preds.weighted) - (1-y) * log(1- preds.weighted) )
+constraint = list(alphas >= 0)
+prob = Problem(Minimize(obj), constraint)
+solution = solve(prob, solver = "ECOS")
+
+# Calculate the validation error under the given lambda (by subtracting the penalized term)
+opt.val = solution$value
+```
+
+```{r}
+preds = matrix(0, nrow(df), length(num.nodes))
+
+# genesis tree to be pruned
+parent.tree = tree(V2 ~., train,
+               control = 
+                   tree.control(nrow(train), mincut = 2, 
+                                minsize = 5, mindev = 0.0001)
+               )
+
+for (i in seq_along(num.nodes)) {
+    curr.tree = prune.tree(parent.tree, best = num.nodes[i])
+    preds[, i] = predict(curr.tree, df)
+}
+
+alphas.opt = solution$getValue(alphas) # optimal value of alphas
+y = train[, 1]
+
+test.preds = preds[inds$test, ] %*% alphas.opt
+test_roc = roc(test$V2 ~ c(test.preds), plot = TRUE, print.auc = TRUE)
+```
+
+```{r}
+alphas.opt
+```
+
+```{r}
+library(writexl)
+weights = cbind(num.nodes, alphas.opt)
+colnames(weights) = c("# Terminal Nodes", "Weight")
+weights = as.data.frame(weights)
+weights$Weight = round(weights$Weight, 3)
+write_xlsx(weights, "weights1.xlsx")
+weights
+```
+
+## Random Forest for benchmarking
+Random forests are grown to minimize the RMSE (treat binary classification as a regression problem)
+
+```{r}
+library(caret)
+control <- trainControl(method="repeatedcv", number=5, repeats=3, search="grid")
+tunegrid <- expand.grid(.mtry=seq(1, 30))
+rf_gridsearch <- train(train[,-1], factor(train[,1]), ntree=256, method="rf", metric="Accuracy", tuneGrid=tunegrid, trControl=control)
+print(rf_gridsearch)
+plot(rf_gridsearch)
+```
+
+```{r}
+best_mtry = rf_gridsearch$bestTune[[1]]
+rf.best = randomForest(V2 ~., data = train, mtry = best_mtry, ntree = 256)
+rf.test.preds = predict(rf.best, test)
+```
+
+
+```{r}
+parent.tree = tree(V2 ~., train[fold, ],
+               control = 
+                   tree.control(nrow(train[fold, ]), mincut = 2, 
+                                minsize = 5, mindev = 0))
+```
+
+## Single Tree
+
+```{r, echo = FALSE}
+# Build a single tree & CV to select optimal number of terminal nodes
+
+cv.maxnode = seq(2,14)
+
+cv.AUC = numeric( length(cv.maxnode) )
+
+for (j in seq_along(cv.maxnode) ) {
+    maxnode = cv.maxnode[j]
+    auc.score = 0
+
+    # stratified K-fold CV
+    for (fold in folds){
+        valid.set = train[-fold, ]
+        nrow.valid = nrow(valid.set)
+        # genesis tree to be pruned
+        parent.tree = tree(V2 ~., train[fold, ],
+                       control = 
+                           tree.control(nrow(train[fold, ]), mincut = 2, 
+                                        minsize = 5, mindev = 0)
+                       )
+        pruned.tree = prune.tree(parent.tree, best = maxnode)
+        pruned.preds = predict(pruned.tree, valid.set)
+        auc.score = auc.score + auc(valid.set$V2, pruned.preds)
+    }
+    cv.AUC[j] = auc.score / length(folds) # average AUC value
+}
+```
+
+```{r}
+best.maxnode = cv.maxnode[which.max(cv.AUC)]
+best.maxnode
+```
+
+## Retrain with best number of terminal nodes
+```{r}
+parent.tree = tree(V2 ~., train,
+               control = 
+                   tree.control(nrow(train), mincut = 2, 
+                                minsize = 5, mindev = 0)
+               )
+pruned.tree = prune.tree(parent.tree, best = best.maxnode)
+pruned.preds = predict(pruned.tree, test)
+auc(test$V2, pruned.preds)
+```
+
+## Compare the ROC curves of stacking trees vs random forests
+
+```{r}
+test_roc = roc(test$V2 ~ c(test.preds), plot = TRUE, print.auc = TRUE, col = "blue")
+test_roc = roc(test$V2 ~ c(rf.test.preds), plot = TRUE, add = TRUE,
+               print.auc = TRUE, print.auc.x = 0.5, print.auc.y = 0.6, col = "red")
+test_roc = roc(test$V2 ~ c(pruned.preds), plot = TRUE, add = TRUE,
+               print.auc = TRUE, print.auc.x = 0.5, print.auc.y = 0.7, col = "green")
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
