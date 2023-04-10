@@ -2,8 +2,7 @@
 
 ### Introduction
 
-
-We plan to investigate the modeling power of optimally grown classification trees in comparison with feedforward neural networks. We will first obtain an empirical relationship between the model complexity of a neural network versus that of a classification tree when both models have similar test accuracy. We will also look for hybrid tree algorithms that strike a balance between optimality and runtime, in part to help bound the performance of optimally grown classification trees.
+This is the code repository for my ORFE senior thesis, which is about computational experiments on several tree-based classification algorithms. Each folder 
 
 ### Dependencies
 
