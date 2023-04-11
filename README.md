@@ -2,28 +2,28 @@
 
 ### Introduction
 
-This is the codebase for my senior thesis, a report on computational experiments I performed on several tree-based classification algorithms. For this thesis project, I was forunate to have been mentored by Professor [Jason Klusowski](https://jasonklusowski.github.io/) at Princeton ORFE. Each folder in this repo contains scripts I used to generate results presented in the corresponding thesis chapter. 
+This is the codebase for my senior thesis, a report on computational experiments I conducted on several tree-based classification algorithms. For this thesis project, I was forunate to have been mentored by Professor [Jason Klusowski](https://jasonklusowski.github.io/) at Princeton ORFE. Each folder in this repo contains scripts I used to generate results presented in the corresponding thesis chapter. 
 
-If you'd like to rerun some experiments, make sure to first set your present working directory to the root of this repository (`Senior_Thesis_Code/`). When I made reorganized my code scripts by chapters, I tried my best to refactor module and file references assuming you are at the repo root. The only exception is the experiments for Chapter 5, which require you to set the working directory to `/Senior_Thesis_Code/Ch5_stacking`.
+If you'd like to rerun some experiments, make sure to first set your present working directory to the root of this repository (`Senior_Thesis_Code/`). When I reorganized my code scripts by chapters, I tried my best to refactor module and file references assuming you are at the repo root. The only exception is the experiments for Chapter 5, which needs you to set the working directory to `/Senior_Thesis_Code/Ch5_stacking`.
 
 ### Repository Contents
 
-- `Ch2_framework/`: Builds a pretrained neural network, and uses the neural net to generate synthetic data. Stores the synthetic data in the folder `synthetic_data`.
+- `Ch2_framework/`: Builds a pretrained feedforward neural network of a customizable dimension, and uses the neural net to generate synthetic data. Stores the synthetic data in the folder `synthetic_data`.
     - `make_width_data.ipynb` is the driver code.
 - `Ch3_optimal/`: Trains and tests optimal classification trees (OCTs) on the previously mentioned synthetic data.
     - `experiment_instance.py` is the main script.
     - `slurm_scripts/` contains all the Slurm scripts that intialize the parameters of the optimization instance specified in `experiment_instance.py` and submits the computing job to Princeton's computing cluster to solve the optimization problem.
-    - `tree/`: Code that implements the OCT optimization algorithm. Forked from [this repo](https://github.com/LucasBoTang/Optimal_Classification_Trees) with minor revisions.
+    - `tree/`: module that implements the OCT optimization algorithm. Forked from [this repo](https://github.com/LucasBoTang/Optimal_Classification_Trees) with minor revisions.
 - `Ch4_oblique/`: Implements an oblique classification tree algorithm (HHCART). Also trains and tests oblique classification trees on the previously mentioned synthetic data.
     - `scikit_obliquetree/`: Implements the HHCART algorithm for classification tasks, which builds an oblique decision tree classifier. Forked from [this repo](https://github.com/hengzhe-zhang/scikit-obliquetree) with several adaptations to generalize the module for classification tasks.
-    - `oblique.ipynb` is the driver code. If it takes too long to run on the Jupyter notebook, try using `oblique_experiment.py`.
+    - `oblique.ipynb` is the driver code. If it takes too long to run on the Jupyter notebook, try using `oblique_experiment.py` instead.
     - `VIS_Oct6.ipynb`: Responsible for generating Figures 4.2 and 4.3 in the senior thesis.
 - `Ch5_stacking/`: Implements stacking tree predictors for binary classification. Compares test performances of stacking tree, single tree and random forests on three different datasets.
-    - `main.R` is the driver code. Use the command `Rscript main.R number` where `number` = 1,2, or 3 depending on the dataset you want to analyze. The default loss for stacking is logistic.
+    - `main.R` is the driver code. Use the command `Rscript main.R number` where `number` = 1, 2, or 3 depending on the dataset you want to analyze. The default loss for stacking is logistic.
     - `auc_calc.R` provides functions that calculate the test AUC scores for stacking, single CART tree, and random forests, respectively. The AUC scoring function for stacking also implements the stacking algorithm as a convex optimization program.
     - `nolambda_breastCancer_hinge.Rmd`: implements stacking tree with __hinge__ loss. Responsible for generating Figure 5.2 in the senior thesis.
     - `nolambda_breastCancer_logistic.Rmd`: implements stacking tree with __logistic__ loss. Responsible for generating Figure 5.1 in the senior thesis.
-- `Ch6_visual/` runs visualization experiments that compare the decision boundaries of deep neural networks with those of oblique and axis-parallel decision trees.
+- `Ch6_visual/`: Runs visualization experiments that compare the decision boundaries of deep neural networks with those of oblique and axis-parallel decision trees.
     - `scratch.ipynb`: driver code for experiments done on `sklearn`'s half moon dataset. Corresponds to thesis chapter 6.1-6.3.
     - `scratch_circle.ipynb`: driver code for experiments done on `sklearn`'s concentric circles dataset. Corresponds to thesis chapter 6.4.
 
