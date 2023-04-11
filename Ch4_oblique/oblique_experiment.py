@@ -1,4 +1,5 @@
-# To allow for proper module referencing, set the pwd to be 
+# To allow for proper module importing and file referencing, please set the pwd 
+# by cd to 'Senior_Thesis_Code/' on command line.
 
 import time, itertools, sys, warnings, os, json
 warnings.simplefilter(action='ignore', category=FutureWarning)
@@ -9,8 +10,8 @@ import numpy as np
 from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split, StratifiedKFold, GridSearchCV, cross_val_score
 import Ch2_framework.dataset as dataset
-from scikit_obliquetree.HHCART import HouseHolderCART
-from scikit_obliquetree.segmentor import MeanSegmentor, TotalSegmentor, Gini
+from Ch4_oblique.scikit_obliquetree.HHCART import HouseHolderCART
+from Ch4_oblique.scikit_obliquetree.segmentor import MeanSegmentor, TotalSegmentor, Gini
 
 start_time = time.time()
 
@@ -23,7 +24,7 @@ random_states = [0,1,2,3]
 cv_random_states = {0:4, 1:5, 2:6, 3:7} # random_states when doing cross-validation
 train_ratio = 0.8
 test_ratio = 0.2
-CSV_FILEPATH = './res/oblique.csv'
+CSV_FILEPATH = 'res/oblique.csv'
 COLUMNS= ['NN_dim','CART_depth','seed','min_samples_leaf','train_acc','test_acc','train_time']
 data = 'CTG_width'
 

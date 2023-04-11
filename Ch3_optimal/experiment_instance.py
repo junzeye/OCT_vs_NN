@@ -1,3 +1,6 @@
+# To allow for proper module importing and file referencing, please reset the pwd 
+# by cd to 'Senior_Thesis_Code/' on command line.
+
 import time, itertools, sys, warnings, os, json, argparse
 warnings.simplefilter(action='ignore', category=FutureWarning)
 from os import path
@@ -6,7 +9,7 @@ import pandas as pd
 from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split
 from sklearn import tree
-from tree import optimalDecisionTreeClassifier
+from Ch3_optimal.tree import optimalDecisionTreeClassifier
 import Ch2_framework.dataset as dataset
 
 parser = argparse.ArgumentParser()
@@ -36,7 +39,7 @@ train_ratio = 0.6
 val_ratio = 0.2
 test_ratio = 0.2
 MIPGAP_TOLERANCE = 0.1 # minimum bar to stop retraining model
-CSV_FILEPATH = './res/oct_vary_width.csv'
+CSV_FILEPATH = 'res/oct_vary_width.csv'
 COLUMNS= ['instance', 'hidden_dim', 'depth', 'alpha', 'seed', 'train_acc', 'val_acc', 
         'test_acc', 'train_time', 'gap']
 
@@ -65,7 +68,7 @@ if len(row): # if the specific oct is already trained and optimized up to a degr
 else: # tree has not been trained, so train
     octree = optimalDecisionTreeClassifier(max_depth=d, min_samples_split=min_samples_split, alpha=a, warmstart=True,
                                                 timelimit=timelimit, output=True)
-    filepath = f'./synthetic_tests/CTG_width/gurobi_logs/oct_dim_{hidden_dim}_a_{a}_d_{d}_l{min_samples_split}_s_{s}.txt'
+    filepath = f'synthetic_tests/CTG_width/gurobi_logs/oct_dim_{hidden_dim}_a_{a}_d_{d}_l{min_samples_split}_s_{s}.txt'
     
     orig_stdout = sys.stdout
     with open(filepath, 'w') as f: # redirect the Gurobi logs to a different file
